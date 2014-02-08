@@ -63,12 +63,7 @@
 //        $( "ul, li" ).disableSelection();
         
         // Estilo cola 
-        var estilo_cola = "";
-        estilo_cola += "<span id='remove-item' class='glyphicon glyphicon-remove-circle'></span>
-                            
-        
-        
-        ";
+        var estilo_cola = "<span id='remove-item' class='glyphicon glyphicon-remove-circle'></span><div class='progress barra-cola'><div style='line-height:22px;width:40%;' class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='40' aria-valuemin='0' aria-valuemax='100'></div>";
         
         
     
@@ -86,7 +81,7 @@
             accept: ":not(.ui-sortable-helper)",
             drop: function( event, ui ) {
                 $( this ).find( ".placeholder" ).remove();
-                $( "<li class='list-group-item'></li>" ).html(estilo_cola+ ui.draggable.html() ).appendTo( this );
+                $( "<li class='list-group-item'></li>" ).html(ui.draggable.html()+estilo_cola ).appendTo( this );
         }
         }).sortable({
             items: "li:not(.placeholder)",
@@ -234,7 +229,7 @@
                                         <span>95 MB</span>
                                         <span>1.35kb/s</span>
                                     </div>
-                                <div class="progress progress-striped active">
+                                <div class="progress progress-striped active altura-progreso">
                                     <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
 
                                     </div>

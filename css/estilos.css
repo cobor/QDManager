@@ -41,12 +41,16 @@ body {
     margin-bottom:130px;
 }
 
-.progress {
+.altura-progreso {
     height:33px;
-    
-
 }
 
+
+.barra-cola {
+    margin-bottom:0;
+    height:6px;
+
+}
 .progress-bar {line-height:33px; color:black;text-align:right;padding-right:5px;}
 .data-descarga {
     text-align:center;
