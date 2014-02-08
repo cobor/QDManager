@@ -1,0 +1,88 @@
+.ancho {}
+
+.progreso {
+}
+
+
+.footer-h3 {
+    color:white;
+}
+
+.ancho-footer {
+}
+
+.footer-descargas {list-style:none;}
+.footer-descargas>li {
+    padding:10px;
+    float:left;
+    
+}
+.footer-descargas>.derecha {
+}
+.footer-descargas button {width:120px;}
+
+.barra-ancho {
+/*  width:calc((90%) / 1.39);*/
+}
+
+.velocidad , .transferido {color:white;}
+
+.acciones {}
+
+.lista-progreso {
+/*    width:79%;*/
+}
+
+.barra-progreso {
+    
+}
+
+body {
+    margin-bottom:130px;
+}
+
+.progress {
+    height:33px;
+    
+
+}
+
+.progress-bar {line-height:33px; color:black;text-align:right;padding-right:5px;}
+.data-descarga {
+    text-align:center;
+    color:white;
+    margin-top:-20px;
+    
+
+}
+
+.container {width:100%;}
+.altura-footer {
+    min-height:130px;
+}
+.magia {    
+}
+
+#cola-descarga {
+    min-height:100px;
+    background:red;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+#cola-descarga ul { margin: 0; padding: 1em 0 1em 3em; }
+
+
+.ui-state-hover {
+    background:green;
+
+}
+
+.ui-state-default, .placeholder, .ui-sortable-helper {
+    background:green;
+}
+
+.remove-item {
+    font-size:100px;
+}

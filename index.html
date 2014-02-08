@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>QDManager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+	<!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+	<!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+	<!--script src="js/less-1.3.3.min.js"></script-->
+	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+    <link href="css/estilos.css" rel="stylesheet">
+    
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="img/favicon.png">
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+<!--    <script src="http://192.168.0.128:8080/socket.io/socket.io.js"></script>
+<script>
+    window.onload = function() {
+ 
+    var prueba = document.getElementById("bytes-transferidos");
+ 
+    var socket = io.connect('http://localhost:8080'); 
+       socket.on('mierda', function (data) {
+					console.log(data);
+           
+				});
+        
+    }
+    
+</script> !-->
+    
+    <script>
+    $( document ).ready(function() {
+//        $( "#ficheros-remotos" ).sortable({
+//            revert: true
+//        });
+                
+//    $( "#ficheros-remotos li" ).draggable({
+//        connectToSortable: "#cola-descarga",
+//        helper: "clone",
+//        revert: "invalid"
+//    });
+//        $( "ul, li" ).disableSelection();
+        
+        // Estilo cola 
+        var estilo_cola = "";
+        estilo_cola += "<span id='remove-item' class='glyphicon glyphicon-remove-circle'></span>
+                            
+        
+        
+        ";
+        
+        
+    
+        
+        
+        
+      $( "#ficheros-remotos li" ).draggable({
+        appendTo: "body",
+        helper: "clone"
+      });  
+        
+        $( "#cola-descarga " ).droppable({
+            activeClass: "ui-state-default",
+            hoverClass: "ui-state-hover",
+            accept: ":not(.ui-sortable-helper)",
+            drop: function( event, ui ) {
+                $( this ).find( ".placeholder" ).remove();
+                $( "<li class='list-group-item'></li>" ).html(estilo_cola+ ui.draggable.html() ).appendTo( this );
+        }
+        }).sortable({
+            items: "li:not(.placeholder)",
+            sort: function() {
+                // gets added unintentionally by droppable interacting with sortable
+                // using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+                $( this ).removeClass( "ui-state-default" );
+            }
+        });    
+    });
+   
+    
+    </script>
+</head>
+
+<body>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+            <!-- Header !-->
+			<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="navbar-header">
+					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">QDManager</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="/conectar">Conectar</a>
+						</li>
+						<li>
+							<a href="#">Algo</a>
+						</li>
+						<li>
+                             <a id="modal-123458" href="#modal-container-123458" data-toggle="modal">Configuración</a>
+						</li>
+					</ul>
+				</div>
+
+			</nav>
+            <!-- Fin Header !-->
+
+
+			<!-- Modal !-->
+			<div class="modal fade" id="modal-container-123458" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">
+								Configuración
+							</h4>
+						</div>
+						<div class="modal-body">
+                            <h3>Datos del servidor</h3>
+                            <div class="input-group">
+                                <span class="input-group-addon">Dirección del servidor</span>
+                                <input id="url-server" type="text" class="form-control" placeholder="IP, URL, etc.">
+                            </div>
+                            <br />
+                            <div class="input-group">
+                                <span class="input-group-addon">Puerto</span>
+                                <input id="port-server" type="text" class="form-control" placeholder="El puerto para atracar">
+                            </div>
+                            <h3>Datos de usuario</h3>
+                             <div class="input-group">
+                                <span class="input-group-addon">Usuario</span>
+                                <input id="user-server" type="text" class="form-control" placeholder="Nombre de usuario">
+                            </div>
+                            <br />
+                            <div class="input-group">
+                                <span class="input-group-addon">Contraseña</span>
+                                <input id="password-server" type="password" class="form-control" placeholder="Para robarte">
+                            </div>
+                            <h3>Ruta de descarga</h3>
+                            <div class="input-group">
+                                <span class="input-group-addon">Ruta de destino</span>
+                                <input id="ruta-local" type="text" class="form-control" placeholder="Donde vas a descargar los gigavatios de contenido">
+                            </div>
+						</div>
+						<div class="modal-footer">
+							 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> <button type="button" class="btn btn-primary">Salvador Lopez Arnal</button>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+            <!-- Fin Modal !-->
+
+
+            <div class="magia" >
+                <div class="col-md-6 column">
+					<h3 style="margin-top:60px;">
+						Ficheros remotos
+					</h3>
+					<ul id="ficheros-remotos" class="list-group">
+                        <li class="list-group-item">
+                            <span class="badge">14 GB</span>
+                            <span class="badge">7/2/2014</span>
+                            <div class="">Noche de fiesta S01</div>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">14 GB</span>
+                            <span class="badge">7/2/2014</span>
+                            <div class="">Noche de fiesta S02</div>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">14 GB</span>
+                            <span class="badge">7/2/2014</span>
+                            <div class="">Noche de fiesta S03</div>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">14 GB</span>
+                            <span class="badge">7/2/2014</span>
+                            <div class="">Noche de fiesta S01</div>
+                        </li>
+                    </ul>
+				</div>
+				<div class="col-md-6 column">
+					<h3 style="margin-top:60px;">
+						Cola de descarga
+					</h3>
+					<ul id="cola-descarga" class="list-group">
+                       
+                        
+                    </ul>
+				</div>
+            </div>
+            <!-- Footer !-->
+			<nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse altura-footer" role="navigation">
+                <ul class="footer-descargas">
+						<li class="" >
+                            <div class="">
+                                <h3 class="footer-h3">Acciones</h3>
+                                <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-play"></span> Continuar</button>
+                                <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-pause"></span> Pausar</button>    
+                                <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-fire"></span> Limpiar cola</button> 
+                            </div>
+						</li>
+						<li class="lista-progreso"><h3 id="bytes-transferidos" class="footer-h3">Progreso</h3>
+							<div class="barra-progreso">
+                                    <div class="data-descarga">
+                                        <span>40%</span>
+                                        <span>95 MB</span>
+                                        <span>1.35kb/s</span>
+                                    </div>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+
+                                    </div>
+                                </div>
+                            </div>
+						</li>
+				<!--		<li>
+                            <div class="datos-importantes">
+                            <h3 class="footer-h3">Información</h3>
+                               <div class="velocidad">3Gbps</div>
+                                <div class="transferido">95GB</div>
+                            </div>
+						</li> <!-->
+					</ul>
+			</nav>
+            <!-- Footer !-->
+		</div>
+	</div>
+</div>
+</body>
+</html>
