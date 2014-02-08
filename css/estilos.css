@@ -60,6 +60,15 @@ body {
 
 }
 
+.nombre-cola-descarga {
+    margin-top:-20px;
+    margin-bottom:5px;
+
+}
+
+
+
+
 .container {width:100%;}
 .altura-footer {
     min-height:130px;

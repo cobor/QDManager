@@ -64,7 +64,7 @@
 //        $( "ul, li" ).disableSelection();
         
         // Estilo cola 
-        var estilo_cola = "<span id='remove-item' class='glyphicon glyphicon-remove-circle'></span><div class='progress barra-cola'><div style='line-height:22px;width:40%;' class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='40' aria-valuemin='0' aria-valuemax='100'></div>";
+        var estilo_cola = "<div class='progress barra-cola'><div style='line-height:22px;width:40%;' class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='40' aria-valuemin='0' aria-valuemax='100'></div>";
         
         
     
@@ -82,7 +82,7 @@
             accept: ":not(.ui-sortable-helper)",
             drop: function( event, ui ) {
                 $( this ).find( ".placeholder" ).remove();
-                $( "<li class='list-group-item'></li>" ).html(ui.draggable.html()+estilo_cola ).appendTo( this );
+                $( "<li class='list-group-item'></li>" ).html("<span style='' id='remove-item' class='glyphicon glyphicon-remove-circle'></span>"+ui.draggable.html()+estilo_cola ).appendTo( this );
         }
         }).sortable({
             items: "li:not(.placeholder)",
@@ -183,22 +183,22 @@
                         <li class="list-group-item">
                             <span class="badge">14 GB</span>
                             <span class="badge">7/2/2014</span>
-                            <div class="">Noche de fiesta S01</div>
+                            <div style="" class="">Noche de fiesta S01</div>
                         </li>
                         <li class="list-group-item">
                             <span class="badge">14 GB</span>
                             <span class="badge">7/2/2014</span>
-                            <div class="">Noche de fiesta S02</div>
+                            <div style="" class="">Noche de fiesta S02</div>
                         </li>
                         <li class="list-group-item">
                             <span class="badge">14 GB</span>
                             <span class="badge">7/2/2014</span>
-                            <div class="">Noche de fiesta S03</div>
+                            <div style="" class="">Noche de fiesta S03</div>
                         </li>
                         <li class="list-group-item">
                             <span class="badge">14 GB</span>
                             <span class="badge">7/2/2014</span>
-                            <div class="">Noche de fiesta S01</div>
+                            <div style="" class="">Noche de fiesta S01</div>
                         </li>
                     </ul>
 				</div>
