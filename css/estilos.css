@@ -71,25 +71,27 @@ body {margin-bottom:130px;}
 
 }
 
-#filename, #filesize, #filedate {
+
+
+.filename-estilo, .filesize-estilo, .filedate-estilo {
     position:absolute;
     margin-top:5px;     
 }
 
-#filesize, #filedate {right:0;}
+.filesize-estilo, .filedate-estilo {right:0;}
 
-#filename {
+.filename-estilo {
     left:0;
     margin-left:30px;
     color:black;
 }
 
-#filesize {
+.filesize-estilo {
    margin-right:100px; 
 
 }
 
-#filedate {
+.filedate {
 
 }
 
