@@ -64,7 +64,7 @@
 //        $( "ul, li" ).disableSelection();
         
         // Estilo cola 
-        var estilo_cola = "<div class='progress barra-cola'><div style='line-height:22px;width:40%;' class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='40' aria-valuemin='0' aria-valuemax='100'></div>";
+        var estilo_cola = "";
         
         
     
@@ -82,7 +82,10 @@
             accept: ":not(.ui-sortable-helper)",
             drop: function( event, ui ) {
                 $( this ).find( ".placeholder" ).remove();
+                
+                
                 $( "<li class='list-group-item'></li>" ).html("<span style='' id='remove-item' class='glyphicon glyphicon-remove-circle'></span>"+ui.draggable.html()+estilo_cola ).appendTo( this );
+                
         }
         }).sortable({
             items: "li:not(.placeholder)",
@@ -181,24 +184,34 @@
 					</h3>
 					<ul id="ficheros-remotos" class="list-group">
                         <li class="list-group-item">
-                            <span class="badge">14 GB</span>
+                            <span>Noche de fiesta S01</span>
                             <span class="badge">7/2/2014</span>
-                            <div style="" class="">Noche de fiesta S01</div>
+                            <span class="badge">14 GB</span>
                         </li>
                         <li class="list-group-item">
-                            <span class="badge">14 GB</span>
+                            <span>Noche de fiesta S01</span>
                             <span class="badge">7/2/2014</span>
-                            <div style="" class="">Noche de fiesta S02</div>
+                            <span class="badge">14 GB</span>
                         </li>
                         <li class="list-group-item">
-                            <span class="badge">14 GB</span>
+                            <span>Noche de fiesta S01</span>
                             <span class="badge">7/2/2014</span>
-                            <div style="" class="">Noche de fiesta S03</div>
+                            <span class="badge">14 GB</span>
                         </li>
                         <li class="list-group-item">
-                            <span class="badge">14 GB</span>
+                            <span>Noche de fiesta S01</span>
                             <span class="badge">7/2/2014</span>
-                            <div style="" class="">Noche de fiesta S01</div>
+                            <span class="badge">14 GB</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>Noche de fiesta S01</span>
+                            <span class="badge">7/2/2014</span>
+                            <span class="badge">14 GB</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>Noche de fiesta S01</span>
+                            <span class="badge">7/2/2014</span>
+                            <span class="badge">14 GB</span>
                         </li>
                     </ul>
 				</div>
@@ -206,8 +219,18 @@
 					<h3 style="margin-top:60px;">
 						Cola de descarga
 					</h3>
-					<ul id="cola-descarga" class="list-group">
-                       
+					<ul id="cola-descarga" class="list-group"> 
+                     <li class="list-group-item padding0">
+           <span style='' id='remove-item' class='glyphicon glyphicon-remove-circle'></span>
+           <div class="progress progreso" style=""> 
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                    <span id="filename" class="nombre-fichero">Noche de fiesta S01</span>
+                    <span id="filesize" class="badge">14 GB</span>
+                    <span id="filedate" class="badge">7/2/2014</span>
+                     
+          </div>           
+        </div>
+        </li> 
                         
                     </ul>
 				</div>

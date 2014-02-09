@@ -1,81 +1,47 @@
-.ancho {}
+/* Cosas generales */
+.padding0 {padding:0;}
+.container {width:100%;}
+body {margin-bottom:130px;}
 
-.progreso {
-}
+/* Cosas del drag & drop */
+.ui-state-hover {background:green;}
+.ui-state-default, .placeholder, .ui-sortable-helper {background:green;}
+.remove-item {font-size:100px;}
 
-
-.footer-h3 {
-    color:white;
-}
-
-.ancho-footer {
-}
-
+/* Footer */
+.footer-h3 {color:white;}
 .footer-descargas {list-style:none;}
 .footer-descargas>li {
     padding:10px;
     float:left;
     
 }
-.footer-descargas>.derecha {
-}
 .footer-descargas button {width:120px;}
+.lista-progreso {}
+.barra-progreso {}
 
-.barra-ancho {
-/*  width:calc((90%) / 1.39);*/
-}
+.altura-progreso {height:20px;}
 
-.velocidad , .transferido {color:white;}
-
-.acciones {}
-
-.lista-progreso {
-/*    width:79%;*/
-}
-
-.barra-progreso {
-    
-}
-
-body {
-    margin-bottom:130px;
-}
-
-.altura-progreso {
-    height:33px;
-}
-
-
-.barra-cola {
-    margin-bottom:0;
-    height:6px;
-
-}
-.progress-bar {line-height:33px; color:black;text-align:right;padding-right:5px;}
-.data-descarga {
-    text-align:center;
-    color:white;
-    margin-top:-20px;
-    
-
-}
-
-.nombre-cola-descarga {
-    margin-top:-20px;
-    margin-bottom:5px;
-
-}
-
-
-
-
-.container {width:100%;}
 .altura-footer {
     min-height:130px;
 }
-.magia {    
-}
 
+/*
+.barra-cola {
+    margin-bottom:0;
+    height:30px;
+    padding:0;
+    border-radius: 0;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    overflow:hidden;
+}
+*/
+
+
+/* Estilo cola de descarga */
+
+/* Esto es de prueba */
 #cola-descarga {
     min-height:100px;
     background:red;
@@ -87,15 +53,46 @@ body {
 #cola-descarga ul { margin: 0; padding: 1em 0 1em 3em; }
 
 
-.ui-state-hover {
-    background:green;
+/* Barra de progreso */
+
+#remove-item {
+    position:absolute;
+    margin-top:6px;
+    margin-left:10px;
+}
+
+.progreso {
+    height:30px;
+    margin-bottom: 0;
+        
+}
+
+.barra-progreso {
 
 }
 
-.ui-state-default, .placeholder, .ui-sortable-helper {
-    background:green;
+#filename, #filesize, #filedate {
+    position:absolute;
+    margin-top:5px;     
 }
 
-.remove-item {
-    font-size:100px;
+#filesize, #filedate {right:0;}
+
+#filename {
+    left:0;
+    margin-left:30px;
+    color:black;
 }
+
+#filesize {
+   margin-right:100px; 
+
+}
+
+#filedate {
+
+}
+
+
+
+
