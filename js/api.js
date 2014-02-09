@@ -27,7 +27,7 @@ $(document).ready(function() {
     }
 
     //Cargar lista de archivos y la coloca en la tabla.
-    function getFilelistKS1(refresh=false) 
+    function getFilelistKS1(refresh) 
     {
         //Si es una refresco comprobamos si es kas naranja o limon.
         if(refresh) {
