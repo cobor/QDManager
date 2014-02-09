@@ -4,21 +4,53 @@ $(document).ready(function() {
 //////////////Codigo draggable anterior
 //
 /////////// Estilo cola 
-      var estilo_cola = "";       
-      $( "#ficheros-remotos li" ).draggable({
-            appendTo: "body",
+//    var estilo_cola = ""; 
+//    
+//    
+//                estilo_cola ="<li class='list-group-item padding0'>"+"<span style='' id='remove-item' class='glyphicon glyphicon-remove-circle'></span>"+"<div class='progress progreso' style=''>"+"<div class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='40' aria-valuemin='0' aria-valuemax='100' style='width: 40%'>"
+//                                    <span id='filename' class='nombre-fichero'>Noche de fiesta S01</span>
+//                                    <span id='filesize' class='badge'>14 GB</span>
+//                                    <span id='filedate' class='badge'>7/2/2014</span>
+//                     
+//                                </div>           
+//                            </div>
+//                        </li> 
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+    
+    
+    
+    
+    
+        
+    
+    function hacerDragable() {
+          $( "#ficheros-remotos li" ).draggable({
+            appendTo: "#cola-descarga",
             helper: "clone",
             cancel: "button", 
             revert: "invalid",
-      });   
+      }); 
     
+    } 
         $( "#cola-descarga " ).droppable({
             activeClass: "ui-state-default",
             hoverClass: "ui-state-hover",
             accept: ":not(.ui-sortable-helper)",
             drop: function( event, ui ) {
                 $( this ).find( ".placeholder" ).remove();
-                $( "<li class='list-group-item'></li>" ).html("<span style='' id='remove-item' class='glyphicon glyphicon-remove-circle'></span>"+ui.draggable.html()+estilo_cola ).appendTo( this );       
+                $( "<li class='list-group-item'></li>" ).html("<span style='' id='remove-item' class='glyphicon glyphicon-remove-circle'></span>"+"<div class='progress progreso' style=''>"+"<div class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='40' aria-valuemin='0' aria-valuemax='100' style='width: 40%'>"+ui.draggable.html()).appendTo( this )+"</div></div>";
+               $('#cola-descarga li').addClass('padding0');
+                 $('.progress-bar >  #filename').addClass('filename-estilo');
+                 $('.progress-bar > #filesize').addClass('filesize-estilo');
+                 $('.progress-bar > #filedate').addClass('filedate-estilo');
             }
         }).sortable({
             items: "li",
@@ -81,23 +113,8 @@ $(document).ready(function() {
 //	       }
 //	   });    
 //    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
+    
     //Human FileSizes
     function getReadableFileSizeString(fileSizeInBytes) {
 
@@ -135,6 +152,7 @@ $(document).ready(function() {
             data.forEach(function(item) {
                  $("#ficheros-remotos").append('<li class="list-group-item"><span id="filename">'+item["name"]+'</span><span id="filedate" class="badge">'+getDateHuman(item["date"])+'</span><span id="filesize" class="badge">'+getReadableFileSizeString(item["size"])+'</span></li>');
             });
+            hacerDragable(); // Ejecuta el js para que se pueda arrastrar la lista.
         });
     }
 

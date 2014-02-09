@@ -20,3 +20,5 @@ io.sockets.on('connection', function(socket){
 
 		socket.emit('msg', {'msg': prueba});
     }, 1000);
+    
+});
