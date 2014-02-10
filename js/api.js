@@ -1,35 +1,5 @@
 $(document).ready(function() {
     
-//
-//////////////Codigo draggable anterior
-//
-/////////// Estilo cola 
-//    var estilo_cola = ""; 
-//    
-//    
-//                estilo_cola ="<li class='list-group-item padding0'>"+"<span style='' id='remove-item' class='glyphicon glyphicon-remove-circle'></span>"+"<div class='progress progreso' style=''>"+"<div class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='40' aria-valuemin='0' aria-valuemax='100' style='width: 40%'>"
-//                                    <span id='filename' class='nombre-fichero'>Noche de fiesta S01</span>
-//                                    <span id='filesize' class='badge'>14 GB</span>
-//                                    <span id='filedate' class='badge'>7/2/2014</span>
-//                     
-//                                </div>           
-//                            </div>
-//                        </li> 
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-    
-    
-    
-    
-    
-        
     
     function hacerDragable() {
           $( "#ficheros-remotos li" ).draggable({
@@ -61,60 +31,28 @@ $(document).ready(function() {
             }
         });    
         
-//        // Codigo nuevo draggable
-//        
-//        function anadirElementos(ui) {
-//           // console.log(ui);
-//       //    var nombre_fichero = $(ui).find("#filename").text();
-////            var fecha_fichero = $(ui).find("#filedate").text();
-////            var tamano_fichero = $(ui).find("#filesize").text();
-////            
-//      //      console.log(nombre_fichero);
-////            console.log(fecha_fichero);
-////            console.log(tamano_fichero);
-//        
-//            // MIERDA Y MAS MIERDA
-//            $("#ficheros-remotos").empty().append(
-//                
-//                "<li class='list-group-item'>"+
-//                    "<span id='filename'>Noche de fiesta S01</span>"+
-//                    "<span id='filedate' class='badge'>7/2/2014</span>"+
-//                    "<span id='filesize' class='badge'>14 GB</span>"+
-//                "</li>"
-//            );
-//            getFilelistKS1();
-//            
-//        }
-//        
-//        var $ficheros_remotos = $( "#ficheros-remotos" );
-//	    var $cola_descargas = $( "#cola-descarga" );
-//        
-//        
-//        $( "li", $ficheros_remotos ).draggable({
-//             appendTo: "body",
-//            cancel: "button", 
-//		      revert: "invalid",
-//		  containment: "document",
-//		  helper: "clone",
-//		  cursor: "move"
-//	   });
-//      $cola_descargas.droppable({
-//		  accept: "#ficheros-remotos > li",
-//		  drop: function( event, ui ) {
-//              $("#cola-descarga").append(ui.draggable); // AQUI DE ALGUNA FORMA HAY QUE GENERAR EL CODIGO NECESARIO PARA AÑADIR LA BARRA Y LOS ESTILOS INDIVIDUALES QUE TIENE LA COLA
-//			  anadirElementos(); // esto hace algun tipo de magia que no se borre lo de la izquierda
-//              $( "li", $ficheros_remotos ).draggable({
-//    		      cancel: "button", // these elements won't initiate dragging
-//		          revert: "invalid", // when not dropped, the item will revert back to its initial position
-//		          containment: "document",
-//		          helper: "clone",
-//		          cursor: "move"
-//	           })
-//	       }
-//	   });    
-//    
 
+    //Funcion ordena por campo
+    //THANKS STACKOVERFLOW http://stackoverflow.com/a/4698083
+    function sortJsonArrayByProperty(objArray, prop, direction){
+        if (arguments.length<2) throw new Error("sortJsonArrayByProp requires 2 arguments");
+        var direct = arguments.length>2 ? arguments[2] : 1; //Default to ascending
+
+        if (objArray && objArray.constructor===Array){
+            var propPath = (prop.constructor===Array) ? prop : prop.split(".");
+            objArray.sort(function(a,b){
+                for (var p in propPath){
+                    if (a[propPath[p]] && b[propPath[p]]){
+                        a = a[propPath[p]];
+                        b = b[propPath[p]];
+                    }
+                }
     
+                return ( (a < b) ? -1*direct : ((a > b) ? 1*direct : 0) );
+            });
+        }
+    }
+
     //Human FileSizes
     function getReadableFileSizeString(fileSizeInBytes) {
 
@@ -149,6 +87,9 @@ $(document).ready(function() {
             $("#ficheros-remotos").empty();
         }
         $.getJSON('http://api.bots.tf/gala/',function(data){
+            
+            //Ordenamos primero por fecha.
+            sortJsonArrayByProperty(data, 'attributes.date',-1);            
             data.forEach(function(item) {
                  $("#ficheros-remotos").append('<li class="list-group-item"><span id="filename">'+item["name"]+'</span><span id="filedate" class="badge">'+getDateHuman(item["date"])+'</span><span id="filesize" class="badge">'+getReadableFileSizeString(item["size"])+'</span></li>');
             });
