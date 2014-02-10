@@ -12,18 +12,34 @@ body {margin-bottom:130px;}
 .footer-h3 {color:white;}
 .footer-descargas {list-style:none;}
 .footer-descargas>li {
-    padding:10px;
-    float:left;
-    
+    padding:10px;    
 }
-.footer-descargas button {width:120px;}
-.lista-progreso {}
-.barra-progreso {}
 
-.altura-progreso {height:20px;}
+.footer-acciones {float:left;}
+.footer-progreso{
+    
+    width:100%;
+}
+.footer-acciones button {width:120px;}
+.barra-progreso {}
+.altura-progreso {height:33px;}
 
 .altura-footer {
     min-height:130px;
+}
+.data-descarga{ 
+    float:right;
+    font-size:24px;
+    color:white;
+    margin-top:15px;
+}
+
+.text-descarga-total {
+    position:absolute;
+    text-align: center;
+    display: block;
+    width: 100%;
+    color:black;
 }
 
 /*
@@ -37,6 +53,12 @@ body {margin-bottom:130px;}
     overflow:hidden;
 }
 */
+
+
+
+
+
+
 
 
 /* Estilo cola de descarga */
@@ -72,15 +94,10 @@ body {margin-bottom:130px;}
     margin-bottom: 0;
     background-color: transparent;
     box-shadow: 0 0 0 0;
-    border:0;
-        
+    border:0;       
 }
 
-.barra-progreso {
-
-}
-
-
+.barra-progreso {}
 
 .filename-estilo, .filesize-estilo, .filedate-estilo {
     position:absolute;
@@ -97,13 +114,28 @@ body {margin-bottom:130px;}
 
 .filesize-estilo {
    margin-right:96px; 
-
 }
 
 .filedate-estilo {
     margin-right:16px;
 }
 
+#refresh-ks1 {
+float:right;
+    margin-right:20px;
+    cursor:pointer;
+    transition:width 2s, height 2s, transform 2s;
+    -webkit-transition:width 2s, height 2s, -webkit-transform 2s;
+}
 
+#refresh-ks1:hover {
+    color:#5CB85C;
+    transform:rotate(360deg);
+    -webkit-transform:rotate(360deg);    
+}
 
-
+#filesize {
+    white-space: nowrap;
+    overflow: hidden;
+    
+}
