@@ -2,13 +2,14 @@ $(document).ready(function() {
     
     
     function hacerDragable() {
-          $( "#ficheros-remotos li" ).draggable({
+        $( "#ficheros-remotos li" ).draggable({
             appendTo: "#cola-descarga",
             helper: "clone",
             cancel: "button", 
             revert: "invalid",
-      }); 
-    
+        });
+        //FIX de la altura #cola-descarga
+        $("ul#cola-descarga").css("min-height", $("ul#ficheros-remotos").height());
     } 
         $( "#cola-descarga " ).droppable({
             activeClass: "ui-state-default",
